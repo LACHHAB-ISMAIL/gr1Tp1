@@ -2,15 +2,14 @@
 
 Application web de gestion de bibliothèque développée en **Java (Jakarta EE)** respectant le modèle architectural **MVC (Modèle-Vue-Contrôleur)**.
 
-## Fonctionnalités
 
+## Fonctionnalités
 - **Authentification** : Connexion sécurisée pour les utilisateurs/administrateurs.
 - **Gestion des Auteurs** : Ajouter, modifier, supprimer et lister les auteurs.
 - **Gestion des Livres** : Ajouter, modifier, supprimer et rechercher des livres.
 - **Recherche avancée** : Rechercher des livres par titre, auteur ou date.
 
 ## Technologies Utilisées
-
 - **Langage** : Java 17
 - **Framework Web** : Jakarta EE 10 (Servlets, JSP, JSTL)
 - **Base de Données** : MySQL
@@ -18,7 +17,6 @@ Application web de gestion de bibliothèque développée en **Java (Jakarta EE)*
 - **Serveur d'Application** : Tomcat / Jetty (via Maven Plugin ou IDE)
 
 ## Structure du Projet (MVC)
-
 Le projet suit strictement l'architecture MVC pour séparer les préoccupations :
 
 ### 1. Modèle (Model)
@@ -50,7 +48,6 @@ Gère toutes les interactions avec la base de données (SQL) :
 ---
 
 ## Base de Données
-
 Le script de création de la base de données se trouve dans : [`database/schema.sql`](database/schema.sql).
 
 ### Schéma Relationnel
@@ -67,7 +64,6 @@ La connexion est configurée dans `com.library.util.DatabaseConnection` :
 ---
 
 ## Installation et Exécution
-
 1. **Prérequis** :
    - JDK 17+
    - Maven
