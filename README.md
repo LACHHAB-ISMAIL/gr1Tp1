@@ -1,22 +1,23 @@
-# Gestion de Bibliothèque (Library Management System)
+# Gestion des livres (Library Management System)
 
 Application web de gestion de bibliothèque développée en **Java (Jakarta EE)** respectant le modèle architectural **MVC (Modèle-Vue-Contrôleur)**.
 
 
-## Fonctionnalités
 - **Authentification** : Connexion sécurisée pour les utilisateurs/administrateurs.
 - **Gestion des Auteurs** : Ajouter, modifier, supprimer et lister les auteurs.
 - **Gestion des Livres** : Ajouter, modifier, supprimer et rechercher des livres.
 - **Recherche avancée** : Rechercher des livres par titre, auteur ou date.
+- **Internationalisation** : Support de trois langues (français, anglais et arabe).
+- **Gestion des rôles** : Deux rôles utilisateurs (Admin et Visiteur) avec des droits différents.
 
-## Technologies Utilisées
+
 - **Langage** : Java 17
 - **Framework Web** : Jakarta EE 10 (Servlets, JSP, JSTL)
 - **Base de Données** : MySQL
 - **Build Tool** : Maven
 - **Serveur d'Application** : Tomcat / Jetty (via Maven Plugin ou IDE)
 
-## Structure du Projet (MVC)
+
 Le projet suit strictement l'architecture MVC pour séparer les préoccupations :
 
 ### 1. Modèle (Model)
@@ -47,13 +48,18 @@ Gère toutes les interactions avec la base de données (SQL) :
 
 ---
 
-## Base de Données
+
 Le script de création de la base de données se trouve dans : [`database/schema.sql`](database/schema.sql).
 
 ### Schéma Relationnel
 - **AUTEUR** : `matricule` (PK), `nom`, `prenom`, `genre`.
 - **LIVRE** : `ISBN` (PK), `titre`, `description`, `date_edition`, `editeur`, `matricule` (FK vers AUTEUR).
 - **user** : `id` (PK), `login`, `password`, `role`.
+
+### Contraintes de Validation
+- **Genre de l'auteur** : Doit être "Masculin" ou "Féminin"
+- **Éditeur du livre** : Doit être parmi {ENI, DUNOD, FIRST}
+- **Rôles utilisateur** : Deux rôles possibles : ADMIN ou VISITEUR
 
 ### Configuration
 La connexion est configurée dans `com.library.util.DatabaseConnection` :
@@ -63,7 +69,55 @@ La connexion est configurée dans `com.library.util.DatabaseConnection` :
 
 ---
 
-## Installation et Exécution
+## Internationalisation
+L'application supporte trois langues : français, anglais et arabe.
+
+### Implémentation
+- Utilisation de fichiers de propriétés pour les traductions :
+  - `messages_fr.properties` : Traductions en français
+  - `messages_en.properties` : Traductions en anglais
+  - `messages_ar.properties` : Traductions en arabe
+- Utilisation de la balise `<fmt:setBundle basename="messages" />` de JSTL dans toutes les pages JSP
+- Utilisation de la balise `<fmt:message key="..." />` pour afficher les textes traduits
+- Filter `LanguageFilter` pour gérer le changement de langue
+- Stockage de la langue choisie en session via `session.setAttribute("lang", lang)`
+- Configuration de la locale JSTL via `Config.set(session, Config.FMT_LOCALE, locale)`
+
+### Gestion de la langue
+- Sélecteur de langue dans l'interface utilisateur (FR, EN, AR)
+- La langue par défaut est le français
+- La langue est conservée en session utilisateur
+- Pour l'arabe, l'interface s'adapte automatiquement avec :
+  - Direction RTL (Right-to-Left) via l'attribut `dir="rtl"`
+  - Utilisation de Bootstrap RTL pour le style adapté
+
+### Exemple d'utilisation dans JSP
+```jsp
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<fmt:setBundle basename="messages" />
+<html lang="${sessionScope.lang}" dir="${sessionScope.lang == 'ar' ? 'rtl' : 'ltr'}">
+<!-- Utilisation des messages -->
+<fmt:message key="app.title" />
+```
+
+---
+
+## Gestion des Rôles et Droits d'Accès
+
+### Rôles Utilisateurs
+L'application implémente deux rôles :
+- **ADMIN** : Accès complet à toutes les fonctionnalités (CRUD sur livres et auteurs)
+- **VISITEUR** : Accès en lecture seule à la liste des livres et recherche
+
+### Contrôle d'Accès
+- Filter frontal pour gérer l'authentification
+- Vérification des rôles avant l'accès aux ressources
+- Redirection automatique selon les droits de l'utilisateur
+- Protection des pages d'administration
+
+---
+
+
 1. **Prérequis** :
    - JDK 17+
    - Maven
