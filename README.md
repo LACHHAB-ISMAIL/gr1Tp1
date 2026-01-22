@@ -1,4 +1,4 @@
-# Gestion des livres (Library Management System)
+# Gestion des livres
 
 <img width="1900" height="853" alt="Capture d&#39;écran 2026-01-22 212803" src="https://github.com/user-attachments/assets/57437898-5c70-42ab-a9a5-799f0b06a99d" />
 
