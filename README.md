@@ -1,14 +1,29 @@
 # Gestion des livres (Library Management System)
 
+<img width="1900" height="853" alt="Capture d&#39;écran 2026-01-22 212803" src="https://github.com/user-attachments/assets/57437898-5c70-42ab-a9a5-799f0b06a99d" />
+
+
 Application web de gestion de bibliothèque développée en **Java (Jakarta EE)** respectant le modèle architectural **MVC (Modèle-Vue-Contrôleur)**.
 
 
 - **Authentification** : Connexion sécurisée pour les utilisateurs/administrateurs.
+   <img width="1914" height="857" alt="Capture d&#39;écran 2026-01-22 212818" src="https://github.com/user-attachments/assets/f2687f61-7f0c-4cf2-8bc2-341cf30ec1b5" />
+
 - **Gestion des Auteurs** : Ajouter, modifier, supprimer et lister les auteurs.
+  <img width="1892" height="860" alt="Capture d&#39;écran 2026-01-22 212855" src="https://github.com/user-attachments/assets/19eae879-6692-4b1d-9c9d-c6d2d14cbcd6" />
+
 - **Gestion des Livres** : Ajouter, modifier, supprimer et rechercher des livres.
+  <img width="1905" height="863" alt="Capture d&#39;écran 2026-01-22 212840" src="https://github.com/user-attachments/assets/6f749b4d-bfab-4228-9185-6f278a659d49" />
+  <img width="1655" height="866" alt="Capture d&#39;écran 2026-01-22 213011" src="https://github.com/user-attachments/assets/67cec8f7-7d46-44cd-a806-70c69d9ddcaa" />
+
 - **Recherche avancée** : Rechercher des livres par titre, auteur ou date.
 - **Internationalisation** : Support de trois langues (français, anglais et arabe).
+<img width="1845" height="854" alt="Capture d&#39;écran 2026-01-22 213116" src="https://github.com/user-attachments/assets/64efa651-36fd-409c-a032-3424399db123" />
+<img width="1853" height="870" alt="Capture d&#39;écran 2026-01-22 213104" src="https://github.com/user-attachments/assets/391eb839-37f8-4f8a-a3c9-7b672dac9ff0" />
+
 - **Gestion des rôles** : Deux rôles utilisateurs (Admin et Visiteur) avec des droits différents.
+  <img width="1828" height="847" alt="Capture d&#39;écran 2026-01-22 213050" src="https://github.com/user-attachments/assets/22abe0b5-2a3b-4a4f-a42c-ce21041034b4" />
+
 
 
 - **Langage** : Java 17
